@@ -4,7 +4,7 @@ import spring.spring_basics_practice.Member;
 
 public interface MemberService {
 
-    // Methods
+    //Methods
     void join(Member member);
 
     Member findMember(Long memberId);
