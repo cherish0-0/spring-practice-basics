@@ -6,7 +6,16 @@ public class MemberServiceImpl implements MemberService {
 
     //field
     //initialization of the memberRepository
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+
+//    private final MemberRepository memberRepository = new MemoryMemberRepository();
+
+    // Using constructor injection for better testability and flexibility
+    private final MemberRepository memberRepository;
+
+    //constructor for dependency injection
+    public MemberServiceImpl(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     //implementation of join method
     @Override
