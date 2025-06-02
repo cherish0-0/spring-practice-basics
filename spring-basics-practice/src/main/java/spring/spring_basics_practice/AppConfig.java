@@ -16,15 +16,19 @@ import spring.spring_basics_practice.order.OrderServiceImpl;
  * AppConfig class that serves as a configuration for the application
  * Acts as a factory for creating and connecting application components
  * Centralizes all object creation and dependency injection
+ *
+ * {@code @Configuration} annotation marks this class as a Spring configuration class
+ * This enables Spring to process the class and generate Spring beans from methods annotated with @Bean
  */
 @Configuration
 public class AppConfig {
 
     /**
      * Creates and returns a MemberService instance
-     * Injects MemoryMemberRepository as a dependency
+     * Injects MemberRepository obtained from memberRepository() method
      * 
-     * @return Configured MemberService implementation
+     * @Bean annotation registers the returned object as a Spring bean
+     * @return Configured MemberService implementation managed by Spring
      */
     @Bean
     public MemberService memberService() {
@@ -33,9 +37,10 @@ public class AppConfig {
 
     /**
      * Creates and returns an OrderService instance
-     * Injects MemoryMemberRepository and FixDiscountPolicy as dependencies
+     * Injects dependencies from other @Bean methods: memberRepository() and discountPolicy()
+     * This demonstrates method-call reuse for bean dependencies
      * 
-     * @return Configured OrderService implementation
+     * @return Configured OrderService implementation managed by Spring
      */
     @Bean
     public OrderService orderService() {
