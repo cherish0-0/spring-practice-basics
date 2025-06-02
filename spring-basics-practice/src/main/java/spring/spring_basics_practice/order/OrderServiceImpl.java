@@ -19,9 +19,9 @@ public class OrderServiceImpl implements OrderService {
         Member member = memberRepository.findById(memberId);
 
         // Calculate the discount amount using the discount policy
-        int discountAmount = discountPolicy.discount(member, itemPrice);
+        int discountPrice = discountPolicy.discount(member, itemPrice);
 
         // Create and return a new Order object
-        return new Order(memberId, itemName, itemPrice, discountAmount);
+        return new Order(memberId, itemName, itemPrice, discountPrice);
     }
 }
