@@ -1,6 +1,9 @@
 package spring.spring_basics_practice;
 
+import spring.spring_basics_practice.discount.DiscountPolicy;
 import spring.spring_basics_practice.discount.FixDiscountPolicy;
+import spring.spring_basics_practice.discount.RateDiscountPolicy;
+import spring.spring_basics_practice.member.MemberRepository;
 import spring.spring_basics_practice.member.MemberService;
 import spring.spring_basics_practice.member.MemberServiceImpl;
 import spring.spring_basics_practice.member.MemoryMemberRepository;
@@ -34,5 +37,26 @@ public class AppConfig {
         return new OrderServiceImpl(
                 new MemoryMemberRepository(),
                 new FixDiscountPolicy());
+    }
+
+    /**
+     * Creates and returns a MemberRepository instance
+     * Provides a centralized way to get the repository implementation
+     *
+     * @return Configured MemberRepository implementation
+     */
+    public MemberRepository memberRepository() {
+        return new MemoryMemberRepository();
+    }
+
+    /**
+     * Creates and returns a DiscountPolicy instance
+     * Enables easy switching between different discount policies
+     *
+     * @return Configured DiscountPolicy implementation
+     */
+    public DiscountPolicy discountPolicy() {
+//        return new FixDiscountPolicy();
+        return new RateDiscountPolicy();
     }
 }
