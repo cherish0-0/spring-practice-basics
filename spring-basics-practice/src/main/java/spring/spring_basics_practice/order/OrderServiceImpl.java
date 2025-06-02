@@ -1,5 +1,6 @@
 package spring.spring_basics_practice.order;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import spring.spring_basics_practice.Member;
@@ -9,6 +10,7 @@ import spring.spring_basics_practice.member.MemberRepository;
 import spring.spring_basics_practice.member.MemoryMemberRepository;
 
 @Component
+@RequiredArgsConstructor // Lombok annotation to generate a constructor with required arguments (final fields)
 public class OrderServiceImpl implements OrderService {
 
     //fields
@@ -20,11 +22,11 @@ public class OrderServiceImpl implements OrderService {
     private final DiscountPolicy discountPolicy;
 
     //constructor for dependency injection
-    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+//    @Autowired
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
 
     //implementation of createOrder method
     @Override
