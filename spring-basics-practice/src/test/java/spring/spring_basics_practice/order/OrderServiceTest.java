@@ -1,15 +1,34 @@
 package spring.spring_basics_practice.order;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import spring.spring_basics_practice.AppConfig;
 import spring.spring_basics_practice.Member;
 import spring.spring_basics_practice.member.*;
 
 public class OrderServiceTest {
 
     //Create a new memberService and orderService instances
-    MemberService memberService = new MemberServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
+//    MemberService memberService = new MemberServiceImpl();
+//    OrderService orderService = new OrderServiceImpl();
+
+    MemberService memberService;
+    OrderService orderService;
+
+    /**
+     * Setup method that runs before each test
+     * Creates a new AppConfig and gets the memberService and orderService
+     * This ensures each test starts with a fresh instance
+     */
+    @BeforeEach
+    public void beforeEach() {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
+    }
+
+
 
     //test method
     @Test
@@ -20,7 +39,7 @@ public class OrderServiceTest {
         Member member = new Member(memberId, "memberA", Grade.VIP);
 
         //when
-        //Create an order for the member
+        //Register the member and create an order
         memberService.join(member);
         Order order = orderService.createOrder(memberId, "itemA", 10000);
 
