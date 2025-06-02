@@ -1,5 +1,7 @@
 package spring.spring_basics_practice;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import spring.spring_basics_practice.discount.DiscountPolicy;
 import spring.spring_basics_practice.discount.FixDiscountPolicy;
 import spring.spring_basics_practice.discount.RateDiscountPolicy;
@@ -15,6 +17,7 @@ import spring.spring_basics_practice.order.OrderServiceImpl;
  * Acts as a factory for creating and connecting application components
  * Centralizes all object creation and dependency injection
  */
+@Configuration
 public class AppConfig {
 
     /**
@@ -23,8 +26,9 @@ public class AppConfig {
      * 
      * @return Configured MemberService implementation
      */
+    @Bean
     public MemberService memberService() {
-        return new MemberServiceImpl(new MemoryMemberRepository());
+        return new MemberServiceImpl(memberRepository());
     }
 
     /**
@@ -33,10 +37,11 @@ public class AppConfig {
      * 
      * @return Configured OrderService implementation
      */
+    @Bean
     public OrderService orderService() {
         return new OrderServiceImpl(
-                new MemoryMemberRepository(),
-                new FixDiscountPolicy());
+                memberRepository(),
+                discountPolicy());
     }
 
     /**
@@ -45,6 +50,7 @@ public class AppConfig {
      *
      * @return Configured MemberRepository implementation
      */
+    @Bean
     public MemberRepository memberRepository() {
         return new MemoryMemberRepository();
     }
@@ -55,6 +61,7 @@ public class AppConfig {
      *
      * @return Configured DiscountPolicy implementation
      */
+    @Bean
     public DiscountPolicy discountPolicy() {
 //        return new FixDiscountPolicy();
         return new RateDiscountPolicy();
