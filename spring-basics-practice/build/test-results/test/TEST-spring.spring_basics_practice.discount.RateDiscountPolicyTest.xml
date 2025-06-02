@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="spring.spring_basics_practice.discount.RateDiscountPolicyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-06-02T08:23:26.662Z" hostname="jiyuui-MacBookPro.local" time="0.022">
-  <properties/>
-  <testcase name="VIP members should receive a 10% discount" classname="spring.spring_basics_practice.discount.RateDiscountPolicyTest" time="0.022"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
