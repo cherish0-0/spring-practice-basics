@@ -1,8 +1,10 @@
 package spring.spring_basics_practice.discount;
 
+import org.springframework.stereotype.Component;
 import spring.spring_basics_practice.Member;
 import spring.spring_basics_practice.member.Grade;
 
+@Component
 public class RateDiscountPolicy implements DiscountPolicy {
 
     //field

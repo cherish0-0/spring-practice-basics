@@ -1,7 +1,10 @@
 package spring.spring_basics_practice.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import spring.spring_basics_practice.Member;
 
+@Component
 public class MemberServiceImpl implements MemberService {
 
     //field
@@ -13,6 +16,7 @@ public class MemberServiceImpl implements MemberService {
     private final MemberRepository memberRepository;
 
     //constructor for dependency injection
+    @Autowired
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

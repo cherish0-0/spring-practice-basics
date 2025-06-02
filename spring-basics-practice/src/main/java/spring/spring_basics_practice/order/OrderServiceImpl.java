@@ -1,11 +1,14 @@
 package spring.spring_basics_practice.order;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import spring.spring_basics_practice.Member;
 import spring.spring_basics_practice.discount.DiscountPolicy;
 import spring.spring_basics_practice.discount.FixDiscountPolicy;
 import spring.spring_basics_practice.member.MemberRepository;
 import spring.spring_basics_practice.member.MemoryMemberRepository;
 
+@Component
 public class OrderServiceImpl implements OrderService {
 
     //fields
@@ -17,6 +20,7 @@ public class OrderServiceImpl implements OrderService {
     private final DiscountPolicy discountPolicy;
 
     //constructor for dependency injection
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;

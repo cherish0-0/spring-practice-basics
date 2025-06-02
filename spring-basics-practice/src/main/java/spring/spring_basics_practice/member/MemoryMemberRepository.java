@@ -1,11 +1,14 @@
 package spring.spring_basics_practice.member;
 
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 import spring.spring_basics_practice.Member;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Component
 public class MemoryMemberRepository implements MemberRepository {
 
     //storage for members
